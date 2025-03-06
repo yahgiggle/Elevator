@@ -1,0 +1,8 @@
+name: Elevator
+main: elevator.Elevator
+version: 0.1
+author: Yahgiggle
+team:
+description: "Elevator plugin"
+license:
+website:

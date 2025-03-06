@@ -1,0 +1,917 @@
+
+            
+          // get the Elevator too the floor the player is on
+          try (ResultSet result = database.executeQuery("SELECT * FROM `Elevators` WHERE `ElevatorID` = '"+player.getAttribute("getElevatorID")+"' AND `Blockpos` = '"+player.getAttribute("getBlockpos")+"'")) {
+                              
+          if (result.next()) {
+               
+            //   String endpos = result.getString("ElevatorBlockPosition");
+               int StoredElevatorID = result.getInt("ElevatorID");
+               int Floor = result.getInt("ElevatorFloorsAmount");
+               
+               player.sendTextMessage("Match 2 ="+StoredElevatorID+" and "+Floor);
+                
+             String BlockposGet = result.getString("Blockpos"); 
+             Vector3f GBlockpos = new Vector3f().add(Vector3f.ONE).fromString(BlockposGet);
+             int GBlockposX = (int) GBlockpos.x;
+             int GBlockposY = (int) GBlockpos.y;
+             int GBlockposZ = (int) GBlockpos.z;
+             
+             String ChunkposGet = result.getString("Chunkpos");   
+             Vector3f GChunkpos = new Vector3f().add(Vector3f.ONE).fromString(ChunkposGet);   
+             int GChunkposX = (int) GChunkpos.x;   
+             int GChunkposY = (int) GChunkpos.y;    
+             int GChunkposZ = (int) GChunkpos.z; 
+               
+            Vector3i ElevatorPosition = new Vector3i(Utils.ChunkUtils.getGlobalBlockPosition(GChunkposX, GChunkposY, GChunkposZ, GBlockposX, GBlockposY, GBlockposZ));
+            float  ElevatorPositionfloatX = ElevatorPosition.x;
+            float  ElevatorPositionfloatY = ElevatorPosition.y;
+            float  ElevatorPositionfloatZ = ElevatorPosition.z;
+            Vector3f ElevatorPositionfloat = new Vector3f().addLocal(ElevatorPositionfloatX, ElevatorPositionfloatY, ElevatorPositionfloatZ);
+               
+               
+                  // get the list of all elevators
+                  for(Prefab Elevator : elevators) {
+                  // get the elevator ids    
+                  int ElevatorID = Elevator.getID();
+                      
+                  // get the right Elevator by matching its ID    
+                  if (ElevatorID == StoredElevatorID){ 
+                 
+                 
+                  player.sendTextMessage("before close door trigger ");
+             
+              try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   while (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");
+                   
+              //    player.sendTextMessage("stored id "+StoredElevatorDoorsID+"");
+                   
+                   
+                   
+                   
+                   for(Prefab ElevatorDoors0 : elevatorDoors0) {
+                   int ElevatorDoorsID = ElevatorDoors0.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors0.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors0.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}  
+                       
+                   for(Prefab ElevatorDoors1 : elevatorDoors1) {
+                   int ElevatorDoorsID = ElevatorDoors1.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors1.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors1.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                   for(Prefab ElevatorDoors2 : elevatorDoors2) {
+                   int ElevatorDoorsID = ElevatorDoors2.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors2.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors2.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                   for(Prefab ElevatorDoors3 : elevatorDoors3) {
+                   int ElevatorDoorsID = ElevatorDoors3.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors3.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors3.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                   for(Prefab ElevatorDoors4 : elevatorDoors4) {
+                   int ElevatorDoorsID = ElevatorDoors4.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors4.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors4.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                   for(Prefab ElevatorDoors5 : elevatorDoors5) {
+                   int ElevatorDoorsID = ElevatorDoors5.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors5.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors5.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                   for(Prefab ElevatorDoors6 : elevatorDoors6) {
+                   int ElevatorDoorsID = ElevatorDoors6.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors6.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors6.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                   for(Prefab ElevatorDoors7 : elevatorDoors7) {
+                   int ElevatorDoorsID = ElevatorDoors7.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors7.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors7.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                   for(Prefab ElevatorDoors8 : elevatorDoors8) {
+                   int ElevatorDoorsID = ElevatorDoors8.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors8.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors8.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                   for(Prefab ElevatorDoors9 : elevatorDoors9) {
+                   int ElevatorDoorsID = ElevatorDoors9.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  
+                   // close doors = 1
+                   ElevatorDoors9.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                   ElevatorDoors9.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                  
+                  }}
+                       
+                       
+                   }
+                   }
+             
+             
+             
+                 
+             
+                
+                 
+                 
+             if (Floor == 0){
+                 
+                 
+             //   String CallElevator = (String) player.getAttribute("CallElevator");
+                 
+                 
+                 
+                 if (CallElevator.equals("NotCalled")){  
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+                 
+                 player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+                 player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile); 
+                 
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 
+                 
+                 executeDelayed(distance / speed, () -> {
+                     
+                   player.sendTextMessage("elevator arrived level 0 "+ ElevatorID);
+                   
+             //        Timer DoorTimer = new Timer(0.0F, 0.2F, 0, null);
+              //       Runnable DoorTask = () -> {
+                 
+                   try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '0' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                       
+                   if (OuterDoorresult.next()) {
+                      
+                       
+                  int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  player.sendTextMessage("open doors now id ="+ StoredElevatorDoorsID); 
+                  
+                  for(Prefab ElevatorDoors0 : elevatorDoors0) {
+                  int ElevatorDoorsID = ElevatorDoors0.getID();    
+                  player.sendTextMessage("get doors open ids = "+ ElevatorDoorsID + " sored id = "+ StoredElevatorDoorsID);    
+                  
+                  
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                  player.sendTextMessage("level 0 doors open");
+                  
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors0.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors0.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile); 
+                  
+                  
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                   
+              //       };
+              //       DoorTimer.setTask(DoorTask);
+              //       DoorTimer.start();
+                   
+                 
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+               //  Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z , 8);
+                 
+                 }
+             
+             }
+                  
+             
+             
+             
+             
+             
+             
+             
+             
+             if (Floor == 1){
+                 
+           //      CallElevator = player.getAttribute("CallElevator");
+                 
+                 
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+              //   player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+              //   player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                 
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 
+                 
+                 
+                 
+                 executeDelayed(distance / speed, () -> { 
+                     
+                   //  player.sendTextMessage("elevator arrived level 0");
+                 
+                 
+                  try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '1' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                  if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors1 : elevatorDoors1) {
+                  int ElevatorDoorsID = ElevatorDoors1.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+               //   player.sendTextMessage("level 1 doors open");
+                  
+                  
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors1.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors1.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+                  
+                  
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                  
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+                 
+             
+             
+             
+             
+             
+             
+             
+             
+             if (Floor == 2){ 
+                 
+             //    CallElevator = player.getAttribute("CallElevator");
+                
+                 
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+               //  player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+              //   player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                 
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 executeDelayed(distance / speed, () -> {
+                     
+                   //  player.sendTextMessage("elevator arrived level 0");
+                 
+                 
+                   try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '2' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors2 : elevatorDoors3) {
+                  int ElevatorDoorsID = ElevatorDoors2.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+              //    player.sendTextMessage("level 1 doors open");
+                  
+                  
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors2.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors2.setAnimatorParameter("RightDoor", "OpenClose", 2);
+       
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+                  
+                  
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                 
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+             
+             
+             
+             
+             
+             
+             
+             if (Floor == 3){ 
+                 
+            //     CallElevator = player.getAttribute("CallElevator");
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+               //  player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+               //  player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                   
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 executeDelayed(distance / speed, () -> { 
+                     
+                   //  player.sendTextMessage("elevator arrived");
+                 
+                 try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '3' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors3 : elevatorDoors3) {
+                  int ElevatorDoorsID = ElevatorDoors3.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                //  player.sendTextMessage("level 1 doors open");
+                  
+                  
+            
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors3.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors3.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+                  
+                  
+       
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                  
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+                  
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             if (Floor == 4){ 
+                 
+            //     CallElevator = player.getAttribute("CallElevator");
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+              //   player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+               //  player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 executeDelayed(distance / speed, () -> { 
+                     
+                   //  player.sendTextMessage("elevator arrived");
+                 
+                 try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '4' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors4 : elevatorDoors4) {
+                  int ElevatorDoorsID = ElevatorDoors4.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                //  player.sendTextMessage("level 1 doors open");
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors4.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors4.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+                  
+                  
+       
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                  
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             if (Floor == 5){ 
+                 
+            //     CallElevator = player.getAttribute("CallElevator");
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+               //  player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+                 
+               //  player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 executeDelayed(distance / speed, () -> { 
+                     
+                   //  player.sendTextMessage("elevator arrived");
+                 
+                 try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '5' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors5 : elevatorDoors5) {
+                  int ElevatorDoorsID = ElevatorDoors5.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                //  player.sendTextMessage("level 1 doors open");
+                  
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors5.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors5.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+       
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                  
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             if (Floor == 6){ 
+                 
+            //     CallElevator = player.getAttribute("CallElevator");
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+                // player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+               //  player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 executeDelayed(distance / speed, () -> {
+                     
+                   //  player.sendTextMessage("elevator arrived");
+                 
+                 try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '6' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors6 : elevatorDoors6) {
+                  int ElevatorDoorsID = ElevatorDoors6.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                //  player.sendTextMessage("level 1 doors open");
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors6.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors6.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+       
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                  
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             if (Floor == 7){ 
+                 
+            //     CallElevator = player.getAttribute("CallElevator");
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+               //  player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+               //  player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 executeDelayed(distance / speed, () -> { 
+                     
+                   //  player.sendTextMessage("elevator arrived");
+                 
+                 try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '7' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors7 : elevatorDoors7) {
+                  int ElevatorDoorsID = ElevatorDoors7.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                //  player.sendTextMessage("level 1 doors open");
+                  
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors7.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors7.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+       
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                  
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             if (Floor == 8){ 
+                 
+             //    CallElevator = player.getAttribute("CallElevator");
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+               //  player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+               //  player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 executeDelayed(distance / speed, () -> {
+                     
+                   //  player.sendTextMessage("elevator arrived");
+                 
+                 try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '8' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors8 : elevatorDoors8) {
+                  int ElevatorDoorsID = ElevatorDoors8.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                //  player.sendTextMessage("level 1 doors open");
+                  
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors8.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors8.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+                  
+       
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                  
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+             
+             
+             
+             
+             
+             
+             if (Floor == 9){ 
+                 
+             //    CallElevator = player.getAttribute("CallElevator");
+                 
+                 if (CallElevator.equals("NotCalled")){
+                     
+                 player.setAttribute("CallElevator","Called");    
+                 Vector3f EPosition = Elevator.getLocalPosition();
+                 float distancebetween = ElevatorY - EPosition.y;
+               //  player.sendTextMessage("target y"+EPosition.y+" player y"+ElevatorY+"");
+                 
+               //  player.sendTextMessage("Close door"+Elevator.getID()+"");
+                 Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 1);
+                 Elevator.setAnimatorParameter("RightDoor", "OpenClose", 1);
+                 
+                 SoundAsset Doorsoundfile = SoundAsset.loadFromFile(getPath() + "/assets/Doors.mp3");
+                   player.playSound(Doorsoundfile);
+                 
+                 
+                 Vector3f targetPosition = Elevator.getLocalPosition().add(0f, distancebetween, 0f);
+                 float distance = Elevator.getLocalPosition().distance(targetPosition);
+                 float speed = 8f;
+                 
+                 executeDelayed(distance / speed, () -> { 
+                     
+                   //  player.sendTextMessage("elevator arrived");
+                 
+                 try (ResultSet OuterDoorresult = database.executeQuery("SELECT * FROM `ElevatorOuterDoors` WHERE `ElevatorFloorsAmount` = '9' AND `ElevatorID` = '"+ElevatorID+"'")) {
+                              
+                   if (OuterDoorresult.next()) {
+                   int StoredElevatorDoorsID = result.getInt("ElevatorDoorsID");    
+                   
+                  for(Prefab ElevatorDoors9 : elevatorDoors9) {
+                  int ElevatorDoorsID = ElevatorDoors9.getID();    
+                      
+                  if (StoredElevatorDoorsID == ElevatorDoorsID){    
+                 // player.sendTextMessage("level 9 doors open");
+                  
+                  
+                  player.playSound(Doorsoundfile); 
+                  Elevator.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  Elevator.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  ElevatorDoors9.setAnimatorParameter("LeftDoor", "OpenClose", 2);
+                  ElevatorDoors9.setAnimatorParameter("RightDoor", "OpenClose", 2);
+                  
+                  SoundAsset soundfile = SoundAsset.loadFromFile(getPath() + "/assets/Bell.wav");
+                  player.playSound(soundfile);
+       
+                  }}
+                 
+                 
+                  }} catch (SQLException ex) {
+                         Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                  }
+                  
+                  
+                 player.setAttribute("CallElevator","NotCalled");
+                 });
+                 Elevator.moveToLocalPosition(ElevatorPositionfloat.x, ElevatorPositionfloat.y, ElevatorPositionfloat.z, 8);}}
+             
+           
+           
+              }
+             
+             
+            } 
+          }else{player.sendTextMessage("no match");}
+        }       catch (SQLException ex) {
+                    Logger.getLogger(Elevator.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            
+            
+            
+            
+            
+          
