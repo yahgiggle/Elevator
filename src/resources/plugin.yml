@@ -1,0 +1,8 @@
+name: OnlineMarket
+main: onlinemarket.OnlineMarket
+version: 0.1
+author: Yahgiggle
+team:
+description: "Market plugin"
+license:
+website: www.yahgiggle.com
